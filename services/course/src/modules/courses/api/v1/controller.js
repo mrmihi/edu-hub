@@ -4,7 +4,7 @@ import { default as filterQuery } from '@sliit-foss/mongoose-filter-query';
 import { tracedAsyncHandler, traced } from '@sliit-foss/functions';
 import { objectIdSchema } from '@app/constants';
 import { toSuccess } from '@app/middleware';
-import { serviceCreateCourse, serviceGetAllCourses, serviceGetSingleCourse, serviceUpdateSingleCourse, serviceDeleteSingleCourse, serviceInitiateOrderPayment, serviceVerifyOrderPayment } from './service';
+import { serviceCreateCourse, serviceGetAllCourses, serviceGetSingleCourse, serviceUpdateSingleCourse, serviceDeleteSingleCourse, serviceInitiateCoursePayment, serviceVerifyCoursePayment } from './service';
 import { createCourseSchema, updateCourseSchema } from './schema';
 
 const course = express.Router();
