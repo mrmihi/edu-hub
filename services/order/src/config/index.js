@@ -7,12 +7,20 @@ class Base {
     return {
       PORT: Joi.number().optional(),
       DB_URL: Joi.string().required(),
+      COURSE_SERVICE_BASE_URL: Joi.string().required(),
+      PAYMENT_SERVICE_BASE_URL: Joi.string().required(),
+      USER_SERVICE_BASE_URL: Joi.string().required(),
+      EMAIL_SERVICE_BASE_URL: Joi.string().required(),
     };
   }
   static get values() {
     return {
       PORT: process.env.PORT ?? 2007,
       DB_URL: process.env.DB_URL,
+      COURSE_SERVICE_BASE_URL: process.env.COURSE_SERVICE_BASE_URL,
+      PAYMENT_SERVICE_BASE_URL: process.env.PAYMENT_SERVICE_BASE_URL,
+      USER_SERVICE_BASE_URL: process.env.USER_SERVICE_BASE_URL,
+      EMAIL_SERVICE_BASE_URL: process.env.EMAIL_SERVICE_BASE_URL,
     };
   }
 }

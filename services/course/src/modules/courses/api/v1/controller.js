@@ -74,31 +74,4 @@ course.patch(
     });
   }),
 );
-
-course.post(
-  '/:id/payment',
-  celebrate({ [Segments.PARAMS]: objectIdSchema() }),
-  tracedAsyncHandler(async function controllerInitiateCoursePayment(req, res) {
-    const data = await traced(serviceInitiateCoursePayment)(req.params.id, req.headers['x-user-id']);
-    return toSuccess({
-      res,
-      data: data,
-      message: 'Payment initialized successfully',
-    });
-  }),
-);
-
-course.get(
-  '/:id/payment/verify',
-  celebrate({ [Segments.PARAMS]: objectIdSchema() }),
-  tracedAsyncHandler(async function controllerVerifyCoursePayment(req, res) {
-    const data = await traced(serviceVerifyCoursePayment)(req.params.id);
-    return toSuccess({
-      res,
-      data: data,
-      message: 'Payment verified successfully',
-    });
-  }),
-);
-
 export default course;

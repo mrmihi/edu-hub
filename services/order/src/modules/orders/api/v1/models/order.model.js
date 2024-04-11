@@ -4,12 +4,12 @@ import { orderStatuses } from '@app/constants';
 
 const OrderSchema = new mongoose.Schema(
   {
-    products: [
+    courses: [
       {
         _id: {
           type: mongoose.SchemaTypes.ObjectId,
           required: true,
-          ref: 'Product',
+          ref: 'Course',
         },
         quantity: Number,
       },
@@ -28,7 +28,6 @@ const OrderSchema = new mongoose.Schema(
       enum: Object.values(orderStatuses),
       default: orderStatuses.confirmed,
     },
-    delivery_id: String,
     payment_id: String,
     payment_transfer_id: String,
   },

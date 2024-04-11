@@ -6,10 +6,10 @@ const connector = serviceConnector({
   service: 'Product-Service',
 });
 
-export const getProductsByIds = (ids = [], v = 'v1') => {
+export const getCoursesByIds = (ids = [], v = 'v1') => {
   return connector.get(`/api/${v}/products?filter[_id]=in(${ids.join(',')})`).then(connector.resolve);
 };
 
-export const updateProductsByIds = (ids = [], payload, v = 'v1') => {
+export const updateCoursesByIds = (ids = [], payload, v = 'v1') => {
   return connector.patch(`/api/${v}/products?filter[_id]=in(${ids.join(',')})`, payload).then(connector.resolve);
 };
