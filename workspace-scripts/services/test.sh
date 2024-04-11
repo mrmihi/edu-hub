@@ -1,0 +1,1 @@
+shx cp ../../jest.config.js . && dotenv -- jest --coverage --verbose --runInBand --forceExit && rimraf jest.config.js

@@ -1,0 +1,11 @@
+frontend/.turbo/**
+frontend/dist/**
+packages/**/node_modules/**
+packages/**/dist/**
+packages/**/coverage/**
+packages/**/.turbo/**
+services/**/node_modules/**
+services/**/dist/**
+services/**/coverage/**
+services/**/.turbo/**
+out/**/**

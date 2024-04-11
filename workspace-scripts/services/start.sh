@@ -1,0 +1,1 @@
+node dist/server.js --enable-source-maps

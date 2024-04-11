@@ -1,0 +1,61 @@
+name: service-build
+description: Base docker build action for the project microservices
+inputs:
+  service:
+    description: Service to build
+    required: true
+  access_token:
+    description: Token to authenticate with the container registry
+    required: true
+  tag:
+    description: Docker image tag
+    required: true
+  repository_access_token:
+    description: Token to authenticate with Github
+    required: true
+  build_args:
+    description: Docker build arguments
+    default: ""
+  dockerfile:
+    description: Path to docker file
+    default: "./workspace-scripts/services/build/docker"
+runs:
+  using: composite
+  steps:
+    - name: Docker build
+      run: DOCKER_BUILDKIT=1 docker build -t ${{ inputs.service }} -f ${{ inputs.dockerfile }} --build-arg service=${{ inputs.service }} --build-arg dir=$(echo "${{ inputs.service }}" | cut -d'-' -f1) ${{ inputs.build_args }} .
+      shell: bash
+    
+    - name: Docker tag
+      run: docker tag ${{ inputs.service }} ghcr.io/akalanka47000/${{ inputs.tag }}
+      shell: bash
+
+    - name: Docker login
+      run: echo ${{ inputs.access_token }} | docker login ghcr.io -u akalanka47000 --password-stdin
+      shell: bash
+
+    - name: Docker push
+      run: docker push ghcr.io/akalanka47000/${{ inputs.tag }}
+      shell: bash
+
+    - name: Update kube-config
+      run: |
+          git clone https://github.com/Akalanka47000/pharmaceutical-kube-config.git && cd pharmaceutical-kube-config
+          sed -i "s/.*ghcr.io.*/          image: ghcr.io\/akalanka47000\/${{ inputs.tag }}/" services/${{ inputs.service }}/deployment.yml
+
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+          git config pull.ff true
+          git add . && git commit -m "Synced ${{ inputs.service }} kube config" || true
+          git remote set-url origin https://Akalanka47000:${{ inputs.repository_access_token }}@github.com/Akalanka47000/pharmaceutical-kube-config.git
+          
+          n=0
+          until [ "$n" -ge 3 ]
+          do
+            git pull --rebase && git push origin main && break
+            n=$((n+1)) 
+            sleep 15
+          done
+
+      shell: bash

@@ -1,0 +1,48 @@
+{
+  "name": "order-service",
+  "version": "1.0.0",
+  "author": "SLIIT-FOSS",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "sh ../../workspace-scripts/services/start-dev.sh",
+    "start": "sh ../../workspace-scripts/services/start.sh",
+    "build": "node ../../workspace-scripts/services/build/esbuild.js",
+    "lint": "sh ../../workspace-scripts/services/lint.sh",
+    "test": "sh ../../workspace-scripts/services/test.sh"
+  },
+  "dependencies": {
+    "@app/constants": "workspace*",
+    "@app/middleware": "workspace*",
+    "@app/mongoose": "workspace*",
+    "@app/server": "workspace*",
+    "@sliit-foss/functions": "2.1.4",
+    "@sliit-foss/module-logger": "1.1.2",
+    "@sliit-foss/mongoose-filter-query": "1.1.1",
+    "@sliit-foss/service-connector": "1.2.0",
+    "bcryptjs": "2.4.3",
+    "celebrate": "15.0.1",
+    "express": "4.16.3",
+    "express-http-context": "1.2.4",
+    "http-errors": "2.0.0",
+    "lodash": "4.17.10",
+    "migrate-mongo": "9.0.0",
+    "mongoose": "^6.3.4",
+    "mongoose-lean-defaults": "2.2.1",
+    "mongoose-aggregate-paginate-v2": "1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "1.12.1"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sliit-foss/nodejs-templates.git"
+  }
+}

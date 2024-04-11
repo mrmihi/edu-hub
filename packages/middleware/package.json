@@ -1,0 +1,18 @@
+{
+    "name": "@app/middleware",
+    "version": "0.0.0",
+    "description": "Middleware functions for the underlying microservices",
+    "private": true,
+    "main": "dist/index.js",
+    "scripts": {
+      "build": "node ../../workspace-scripts/services/build/esbuild.js",
+      "lint": "sh ../../workspace-scripts/services/lint.sh"
+    },
+    "dependencies": {
+      "@app/constants": "workspace*",
+      "@sliit-foss/module-logger": "1.1.2",
+      "celebrate": "15.0.1",
+      "express-http-context": "1.2.4"
+    }
+  }
+  

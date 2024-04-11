@@ -1,0 +1,13 @@
+{
+    "name": "@app/utils",
+    "version": "0.0.0",
+    "description": "Utility functions common between microservices",
+    "private": true,
+    "main": "dist/index.js",
+    "scripts": {
+      "build": "node ../../workspace-scripts/services/build/esbuild.js",
+      "lint": "sh ../../workspace-scripts/services/lint.sh"
+    },
+    "dependencies": {}
+  }
+  

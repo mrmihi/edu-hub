@@ -1,0 +1,17 @@
+{
+    "name": "@app/redis",
+    "version": "0.0.0",
+    "description": "Redis connection for the underlying microservices",
+    "private": true,
+    "main": "dist/index.js",
+    "scripts": {
+      "build": "node ../../workspace-scripts/services/build/esbuild.js",
+      "lint": "sh ../../workspace-scripts/services/lint.sh"
+    },
+    "dependencies": {
+      "@sliit-foss/module-logger": "1.1.2",
+      "ioredis": "5.2.3",
+      "redlock": "4.2.0"
+    }
+  }
+  

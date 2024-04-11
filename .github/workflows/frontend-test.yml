@@ -1,0 +1,17 @@
+name: frontend-test
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - frontend/**
+  workflow_dispatch:
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/unit-test
+        with:
+          service: frontend

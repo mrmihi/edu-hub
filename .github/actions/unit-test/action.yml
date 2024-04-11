@@ -1,0 +1,22 @@
+name: unit-test
+description: Base service unit test action
+inputs:
+  service:
+    description: Service name to run unit tests on
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Setup Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: '16.x'
+        registry-url: 'https://registry.npmjs.org'
+
+    - name: Install dependencies
+      run: npm install -g pnpm@8.0.0 && pnpm install
+      shell: bash
+
+    - name: Run unit tests
+      run: pnpm --filter ${{ inputs.service }} run test
+      shell: bash

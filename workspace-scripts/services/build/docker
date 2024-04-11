@@ -1,0 +1,43 @@
+FROM node:alpine AS cleaner
+
+RUN apk add --no-cache libc6-compat
+RUN apk update
+
+ARG service
+
+WORKDIR /app
+
+RUN yarn global add turbo pnpm
+
+COPY . .
+
+RUN turbo prune --scope=$service --docker
+ 
+FROM node:alpine AS builder
+
+RUN apk add --no-cache libc6-compat
+RUN apk update
+
+ARG service
+ARG dir
+
+WORKDIR /app
+
+RUN yarn global add pnpm
+
+COPY .gitignore .gitignore
+COPY --from=cleaner /app/out/json/ .
+COPY --from=cleaner /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
+COPY --from=cleaner /app/workspace-scripts ./workspace-scripts
+
+RUN pnpm install --production --ignore-scripts
+ 
+COPY --from=cleaner /app/out/full/ .
+
+RUN pnpm turbo run build --filter=$service
+
+EXPOSE 8080
+
+ENV directory=$dir
+
+CMD ["sh", "-c",  "node services/$directory/dist/server.js --enable-source-maps"]
