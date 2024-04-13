@@ -2,18 +2,17 @@ import { Joi } from 'celebrate';
 import { moduleLogger } from '@sliit-foss/module-logger';
 
 const logger = moduleLogger('Config');
-
 class Base {
   static get schema() {
     return {
       PORT: Joi.number().optional(),
-      ORDER_SERVICE_BASE_URL: Joi.string().required(),
+      DB_URL: Joi.string().required(),
     };
   }
   static get values() {
     return {
-      PORT: process.env.PORT ?? 2002,
-      ORDER_SERVICE_BASE_URL: process.env.ORDER_SERVICE_BASE_URL,
+      PORT: process.env.PORT ?? 2010,
+      DB_URL: process.env.DB_URL,
     };
   }
 }

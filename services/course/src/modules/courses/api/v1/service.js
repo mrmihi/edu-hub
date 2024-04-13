@@ -4,7 +4,7 @@ import { createCourse, getAllCourses, getSingleCourse, deleteSingleCourse, updat
 
 const logger = moduleLogger('course-service');
 
-export const serviceCreateCourse =  (order, user) => {
+export const serviceCreateCourse = (order, user) => {
   return traced(createCourse)({ ...order, user });
 };
 
@@ -20,6 +20,6 @@ export const serviceDeleteSingleOrder = (id) => {
   return traced(deleteSingleCourse)(id);
 };
 
-export const serviceUpdateSingleOrder =  (id, payload) => {
+export const serviceUpdateSingleOrder = (id, payload) => {
   return traced(updateSingleCourse)(id, payload);
 };

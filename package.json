@@ -1,5 +1,5 @@
 {
-  "name": "my-turborepo",
+  "name": "edu-hub",
   "version": "0.0.0",
   "private": true,
   "workspaces": [
@@ -14,7 +14,6 @@
     "lint": "turbo run lint",
     "test": "turbo run test",
     "format": "prettier --write \"**/*.{js,ts,tsx,md}\"",
-    "prepare": "husky install",
     "terminate": "sh ./workspace-scripts/terminate.sh"
   },
   "dependencies": {
