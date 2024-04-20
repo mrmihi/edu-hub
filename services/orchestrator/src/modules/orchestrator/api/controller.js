@@ -11,7 +11,7 @@ const connector = serviceConnector({ service: 'Proxy' });
 
 orchestrator.all('/:api_version/:module*', (req, res, next) => {
   switch (req.params.module) {
-    case 'products':
+    case 'courses':
     case 'users':
     case 'dashboard':
     case 'reports':

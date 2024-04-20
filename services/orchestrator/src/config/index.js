@@ -7,13 +7,13 @@ class Base {
   static get schema() {
     return {
       PORT: Joi.number().optional(),
-      ORDER_SERVICE_BASE_URL: Joi.string().required(),
+      COURSE_SERVICE_BASE_URL: Joi.string().required(),
     };
   }
   static get values() {
     return {
       PORT: process.env.PORT ?? 2002,
-      ORDER_SERVICE_BASE_URL: process.env.ORDER_SERVICE_BASE_URL,
+      COURSE_SERVICE_BASE_URL: process.env.COURSE_SERVICE_BASE_URL,
     };
   }
 }
