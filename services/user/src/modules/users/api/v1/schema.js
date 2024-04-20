@@ -7,7 +7,7 @@ export const createUserSchema = Joi.object({
   password: Joi.string().optional(),
   role: Joi.string()
     .valid(...Object.values(roles))
-    .optional(),
+    .required(),
   mobile: Joi.string()
     .pattern(/^[0-9]\d{9}$/)
     .required(),
@@ -16,10 +16,10 @@ export const createUserSchema = Joi.object({
   is_verified: Joi.boolean().optional(),
   verification_code: Joi.string().optional(),
   business: Joi.object({
-    name: Joi.string().required(),
-    email: Joi.string().email().required(),
-    license_number: Joi.string().required(),
-    owner_nic: Joi.string().required(),
+    name: Joi.string().optional(),
+    email: Joi.string().email().optional(),
+    license_number: Joi.string().optional(),
+    owner_nic: Joi.string().optional(),
     is_approved: Joi.boolean().optional(),
     bank_account: Joi.string().optional(),
   }).optional(),

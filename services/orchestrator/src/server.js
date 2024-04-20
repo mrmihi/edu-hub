@@ -7,7 +7,9 @@ import config from './config';
 initializeServer({
   service: 'Orchestrator',
   routes,
-  leadingMiddleware: [authorizer, rateLimiter],
+  leadingMiddleware: [
+    // authorizer,
+    rateLimiter],
   cors: true,
   translations,
   config,

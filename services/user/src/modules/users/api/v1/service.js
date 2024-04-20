@@ -11,7 +11,7 @@ export const serviceCreateUser = async (user) => {
   await hashPasswordIfProvided(user);
   return traced(createUserInDB)(user).then((user) => {
     if (user.role === 'admin') {
-      sendEmail(constructCredentialEmailPayload(user.email, user.role, autoGeneratatedPassword));
+      // sendEmail(constructCredentialEmailPayload(user.email, user.role, autoGeneratatedPassword));
     }
     return user;
   });

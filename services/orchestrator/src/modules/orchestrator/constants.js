@@ -6,7 +6,7 @@ export const serviceHosts = {
   emails: config.EMAIL_SERVICE_BASE_URL,
   sms: config.SMS_SERVICE_BASE_URL,
   products: config.PRODUCT_SERVICE_BASE_URL,
-  orders: config.ORDER_SERVICE_BASE_URL,
+  courses: config.COURSE_SERVICE_BASE_URL,
   payments: config.PAYMENT_SERVICE_BASE_URL,
   reviews: config.REVIEW_SERVICE_BASE_URL,
   dashboard: config.ADMIN_SERVICE_BASE_URL,

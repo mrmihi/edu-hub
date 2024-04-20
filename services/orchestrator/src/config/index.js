@@ -8,12 +8,16 @@ class Base {
     return {
       PORT: Joi.number().optional(),
       COURSE_SERVICE_BASE_URL: Joi.string().required(),
+      USER_SERVICE_BASE_URL: Joi.string().required(),
+      AUTH_SERVICE_BASE_URL: Joi.string().required(),
     };
   }
   static get values() {
     return {
       PORT: process.env.PORT ?? 2002,
       COURSE_SERVICE_BASE_URL: process.env.COURSE_SERVICE_BASE_URL,
+      USER_SERVICE_BASE_URL: process.env.USER_SERVICE_BASE_URL,
+      AUTH_SERVICE_BASE_URL: process.env.AUTH_SERVICE_BASE_URL,
     };
   }
 }

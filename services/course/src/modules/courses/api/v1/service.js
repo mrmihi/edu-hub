@@ -8,18 +8,18 @@ export const serviceCreateCourse = (order, user) => {
   return traced(createCourse)({ ...order, user });
 };
 
-export const serviceGetAllOrders = (filters, sorts, page, limit) => {
+export const serviceGetAllCourses = (filters, sorts, page, limit) => {
   return traced(getAllCourses())({ filters, sorts, page, limit });
 };
 
-export const serviceGetSingleOrder = (id) => {
+export const serviceGetSingleCourse = (id) => {
   return traced(getSingleCourse)(id);
 };
 
-export const serviceDeleteSingleOrder = (id) => {
+export const serviceDeleteSingleCourse = (id) => {
   return traced(deleteSingleCourse)(id);
 };
 
-export const serviceUpdateSingleOrder = (id, payload) => {
+export const serviceUpdateSingleCourse = (id, payload) => {
   return traced(updateSingleCourse)(id, payload);
 };

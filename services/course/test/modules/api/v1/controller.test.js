@@ -1,20 +1,20 @@
 import * as httpMocks from 'node-mocks-http';
-import * as orderService from '../../../../src/modules/courses/api/v1/service';
-import { default as orderController } from '../../../../src/modules/courses/api/v1/controller';
-import { mockAddOrderRequestBody } from '../../../__mocks__';
+import * as courseService from '../../../../src/modules/courses/api/v1/service';
+import { default as courseController } from '../../../../src/modules/courses/api/v1/controller';
+import { mockAddCourseRequestBody } from '../../../__mocks__';
 
-describe('order-controller-tests', () => {
+describe('course-controller-tests', () => {
   const next = jest.fn();
 
-  it('01. should add an order successfully', () => {
-    jest.spyOn(orderService, 'serviceCreateOrder').mockResolvedValue(true);
+  it('01. should add an course successfully', () => {
+    jest.spyOn(courseService, 'serviceCreateCourse').mockResolvedValue(true);
     const req = httpMocks.createRequest({
       method: 'post',
       url: '/',
-      body: mockAddOrderRequestBody,
+      body: mockAddCourseRequestBody,
     });
     const res = httpMocks.createResponse();
-    orderController(req, res, next);
+    courseController(req, res, next);
     expect(res.statusCode).toBe(200);
   });
 });
