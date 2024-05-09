@@ -15,7 +15,7 @@ jobs:
       - uses: ./.github/actions/service-build
         with:
           service: frontend
-          tag: 'pharmaceutical-frontend:${{ github.sha }}-${{ github.run_attempt }}'
+          tag: 'edu-hub-frontend:${{ github.sha }}-${{ github.run_attempt }}'
           access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
           repository_access_token: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
           build_args: ${{ secrets.FRONTEND_BUILD_ARGS }}
