@@ -23,6 +23,7 @@ const { error } = Joi.object(Base.schema).validate(config);
 
 if (error) {
   logger.error(`Environment validation failed. \nDetails - ${error.details[0].message}\nExiting...`);
+
   process.exit(1);
 }
 
