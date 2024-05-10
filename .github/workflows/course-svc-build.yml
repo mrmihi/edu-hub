@@ -1,0 +1,21 @@
+name: course-svc-build
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - services/course/**
+      - packages/**
+  workflow_dispatch:
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/actions/service-build
+        with:
+          service: course-service
+          tag: "edu-hub-course-service:${{ github.sha }}-${{ github.run_attempt }}"
+          access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
+          repository_access_token: ${{ secrets.REPOSITORY_ACCESS_TOKEN }}
