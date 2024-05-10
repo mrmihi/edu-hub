@@ -4,7 +4,7 @@ import { useAuth } from '../hooks';
 import { Home, Login, Register, Verify, ForgotPassword, ResetPassword, Users, Contact, Dashboard, Profile, Orders, Tickets, TicketDetail, Cart, ProductForm, ProductDetail, NotFound, Payment, PaymentConfirmation } from '../pages';
 
 const AnimatedRoutes = () => {
-  useAuth();
+  // useAuth();
 
   const location = useLocation();
 
