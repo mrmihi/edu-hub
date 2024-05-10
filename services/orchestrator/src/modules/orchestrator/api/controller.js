@@ -10,6 +10,7 @@ const orchestrator = express.Router();
 const connector = serviceConnector({ service: 'Proxy' });
 
 orchestrator.all('/:api_version/:module*', (req, res, next) => {
+  // eslint-disable-next-line default-case
   switch (req.params.module) {
     case 'courses':
     case 'users':

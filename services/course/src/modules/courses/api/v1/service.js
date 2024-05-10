@@ -9,7 +9,7 @@ export const serviceCreateCourse = (order, user) => {
 };
 
 export const serviceGetAllCourses = (filters, sorts, page, limit) => {
-  return traced(getAllCourses())({ filters, sorts, page, limit });
+  return traced(getAllCourses)({ filters, sorts, page, limit });
 };
 
 export const serviceGetSingleCourse = (id) => {
