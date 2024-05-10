@@ -17,14 +17,14 @@ orchestrator.all('/:api_version/:module*', (req, res, next) => {
     case 'dashboard':
     case 'reports':
     case 'tickets':
-      // return routeGuards[req.params.module](req, res, next);
     case 'payments':
     case 'emails':
     case 'sms':
-      // return permittedRoles([])(req, res, next);
-    // default:
+    default:
       return next();
   }
+  // return routeGuards[req.params.module](req, res, next);
+  // return permittedRoles([])(req, res, next);
 });
 
 orchestrator.all(

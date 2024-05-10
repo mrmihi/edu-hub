@@ -10,6 +10,7 @@ class Base {
       COURSE_SERVICE_BASE_URL: Joi.string().required(),
       USER_SERVICE_BASE_URL: Joi.string().required(),
       AUTH_SERVICE_BASE_URL: Joi.string().required(),
+      PAYMENT_SERVICE_BASE_URL: Joi.string().required()
     };
   }
   static get values() {
@@ -18,6 +19,7 @@ class Base {
       COURSE_SERVICE_BASE_URL: process.env.COURSE_SERVICE_BASE_URL,
       USER_SERVICE_BASE_URL: process.env.USER_SERVICE_BASE_URL,
       AUTH_SERVICE_BASE_URL: process.env.AUTH_SERVICE_BASE_URL,
+      PAYMENT_SERVICE_BASE_URL: process.env.PAYMENT_SERVICE_BASE_URL
     };
   }
 }

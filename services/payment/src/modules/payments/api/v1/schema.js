@@ -5,7 +5,6 @@ export const initializePaymentSchema = Joi.object({
   metadata: Joi.object().optional().default({}),
   customer: Joi.object({
     name: Joi.string().required(),
-    address: Joi.string().optional(),
   }).required(),
 });
 
