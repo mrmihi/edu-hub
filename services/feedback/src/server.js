@@ -3,15 +3,15 @@ const routes = express.Router();
 const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
-const port = process.env.PORT || 2112;
+const port = process.env.PORT || 2113;
 const dbURL = process.env.MONGO_URL;
-const scheduleRoutes = require('./routes/schedulingRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 
 app.use(cookieParser());
 app.use(express.json());
 
-// scheduling routes
-app.use('/api/v1/schedule', scheduleRoutes);
+// feedback routes
+app.use('/api/v1/feedback', feedbackRoutes);
 
 mongoose
 .connect(dbURL)
