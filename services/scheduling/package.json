@@ -1,8 +1,11 @@
 {
-  "name": "scheduling",
+  "name": "scheduling-service",
   "version": "1.0.0",
   "description": "EduHub - Educational Platform for Online Learning",
-  "main": "dist/server.js",
+  "engines": {
+    "node": ">=16",
+    "npm": ">=8"
+  },
   "scripts": {
     "dev": "sh ../../workspace-scripts/services/start-dev.sh",
     "start": "sh ../../workspace-scripts/services/start.sh",
@@ -14,8 +17,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
-    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "docker": "^1.0.0",
@@ -25,7 +26,8 @@
     "mongoose": "^8.3.1",
     "nodemon": "^3.1.0",
     "prettier": "^3.2.5",
-    "validator": "^13.11.0"
+    "validator": "^13.11.0",
+    "express-healthcheck": "0.1.0"
   },
   "devDependencies": {
     "jest": "^29.7.0",

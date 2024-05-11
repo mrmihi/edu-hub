@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const {isEmail} = require('validator');
-const bcrypt = require('bcrypt');
 
 const learnerSchema = new mongoose.Schema({
   name: {
@@ -39,33 +38,4 @@ const learnerSchema = new mongoose.Schema({
 
 });
 
-// fire a function before doc saved to db
-learnerSchema.pre('save', async function(next) {
-  const salt = await bcrypt.genSalt();
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
-
-// static method to login learner
-learnerSchema.statics.login = async function(email, password) {
-  const learner = await this.findOne({email});
-  if (learner) {
-    const auth = await bcrypt.compare(password, learner.password);
-    if (auth) {
-      return learner;
-    }
-    throw Error('incorrect password');
-  }
-  throw Error('incorrect email');
-};
-
 module.exports = mongoose.model('learner', learnerSchema);
-
-// {
-//   "name" : "student1",
-//   "role" :"learner",
-//   "email" : "student1@gmail.com",
-//   "nic" :"12356221v",
-//   "contact":"0773024107",
-//   "password" : "123456"
-// }
