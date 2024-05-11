@@ -1,5 +1,4 @@
 const express = require('express');
-const routes = express.Router();
 const app = express();
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
