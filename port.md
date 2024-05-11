@@ -11,7 +11,7 @@ This table lists services and their corresponding ports.
 | payment      | 2008        |
 | user         | 2000        |
 | admin        | 2010        |
-|              | 5432        |
+| feedback     | 2011        |
 |              | 27017       |
 |              | 6379        |
 
