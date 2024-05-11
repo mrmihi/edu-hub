@@ -511,6 +511,9 @@ importers:
       express:
         specifier: ^4.19.2
         version: 4.19.2
+      express-healthcheck:
+        specifier: 0.1.0
+        version: 0.1.0
       jsonwebtoken:
         specifier: ^9.0.2
         version: 9.0.2
@@ -7752,6 +7755,10 @@ packages:
       express: 4.18.2
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /express-healthcheck@0.1.0:
+    resolution: {integrity: sha512-FKQVgDo1FMSOYflEq4g6CvNk6stbpkuX0MWXmul8dSICuw/b+3JgoYOq/aiDcYid5k42jh/4HYLYC/M/qDBEuQ==}
     dev: false
 
   /express-http-context@1.2.4:

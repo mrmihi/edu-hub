@@ -5,7 +5,9 @@ const mongoose = require('mongoose');
 const port = process.env.PORT || 2113;
 const dbURL = process.env.MONGO_URL;
 const feedbackRoutes = require('./routes/feedbackRoutes');
+const expressHealth = require('express-healthcheck')
 
+app.use('/system', expressHealth());
 app.use(cookieParser());
 app.use(express.json());
 
