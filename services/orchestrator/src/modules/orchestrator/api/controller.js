@@ -22,6 +22,7 @@ orchestrator.all('/:api_version/:module*', (req, res, next) => {
     case 'sms':
     case 'feedback':
     case 'scheduling':
+    case 'orders':
     default:
       return next();
   }
