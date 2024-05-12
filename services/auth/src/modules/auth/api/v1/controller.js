@@ -6,43 +6,14 @@ import { serviceLogin, serviceRegister, serviceRefreshToken, serviceVerifyUser, 
 import { loginSchema, registerSchema, refreshTokenSchema, validUserResetPasswordSchema, resetPasswordSchema } from './schema';
 
 const auth = express.Router();
-const login_post = async (req, res) => {
-  try {
-    const { email, password, role } = req.body;
-    if (role === "admin") {
-      const admin = await adminSchema.login(email, password);
-      const token = createTokenAdmin(admin._id);
-      res.cookie("jwt", token, {
-        httpOnly: true,
-        maxAge: 3 * 24 * 60 * 60 * 1000,
-      });
-      res.status(200).json({ token, admin: admin.name});
-    } else if (role === "instructor") {
-      const instructor = await instructorSchema.login(email, password);
-      const token = createTokenInstructor(instructor._id);
-      res.cookie("jwt", token, {
-        httpOnly: true,
-        maxAge: 3 * 24 * 60 * 60 * 1000,
-      });
-      res.status(200).json({ token , instructor: instructor.name});
-    } else if (role === "learner") {
-      const learner = await learnerSchema.login(email, password);
-      const token = createTokenLearner(learner._id);
-      res.cookie("jwt", token, {
-        httpOnly: true,
-        maxAge: 3 * 24 * 60 * 60 * 1000,
-      });
-      res.status(200).json({token , learner: learner.name});
-    }
-  } catch (error) {
-    const errors = handleErrors(error);
-    res.status(400).json({ errors });
-  }
-};
 
 auth.post(
   '/login',
-  login_post
+  celebrate({ [Segments.BODY]: loginSchema }),
+  tracedAsyncHandler(async function controllerLogin(req, res) {
+    const data = await traced(serviceLogin)(req.body);
+    return toSuccess({ res, data, message: 'Login successfull!' });
+  }),
 );
 
 auth.post(
