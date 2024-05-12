@@ -13,7 +13,7 @@ class Base {
       USER_SERVICE_BASE_URL: Joi.string().required(),
       EMAIL_SERVICE_BASE_URL: Joi.string().required(),
       FRONTEND_BASE_URL: Joi.string().required(),
-      REDIS_CONNECTION_STRING: Joi.string().required(),
+      // REDIS_CONNECTION_STRING: Joi.string().required(),
     };
   }
   static get values() {
@@ -25,7 +25,7 @@ class Base {
       USER_SERVICE_BASE_URL: process.env.USER_SERVICE_BASE_URL,
       EMAIL_SERVICE_BASE_URL: process.env.EMAIL_SERVICE_BASE_URL,
       FRONTEND_BASE_URL: process.env.FRONTEND_BASE_URL,
-      REDIS_CONNECTION_STRING: process.env.REDIS_CONNECTION_STRING,
+      // REDIS_CONNECTION_STRING: process.env.REDIS_CONNECTION_STRING,
     };
   }
 }
