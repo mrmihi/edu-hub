@@ -13,6 +13,8 @@ orchestrator.all('/:api_version/:module*', (req, res, next) => {
   switch (req.params.module) {
     case 'courses':
     case 'users':
+    case 'auth':
+    case 'admin':
     case 'dashboard':
     case 'reports':
     case 'payments':
@@ -21,7 +23,7 @@ orchestrator.all('/:api_version/:module*', (req, res, next) => {
     case 'feedback':
     case 'scheduling':
     case 'orders':
-    case 'auth':
+    case 'authentication':
     default:
       return next();
   }
