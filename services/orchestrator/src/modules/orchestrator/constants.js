@@ -15,5 +15,6 @@ export const serviceHosts = {
   dashboard: config.ADMIN_SERVICE_BASE_URL,
   reports: config.REPORT_SERVICE_BASE_URL,
   tickets: config.SUPPORT_SERVICE_BASE_URL,
-  authentication : config.AUTHENTICATION_SERVICE_BASE_URL
+  authentication : config.AUTHENTICATION_SERVICE_BASE_URL,
+  learner: config.LEARNER_SERVICE_BASE_URL
 };
