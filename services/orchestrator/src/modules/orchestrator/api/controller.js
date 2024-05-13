@@ -25,8 +25,9 @@ orchestrator.all('/:api_version/:module*', (req, res, next) => {
     case 'orders':
     case 'authentication':
     case 'learner':
+    case 'report':
     default:
-      return next();
+    return next();
   }
   // return routeGuards[req.params.module](req, res, next);
   // return permittedRoles([])(req, res, next);

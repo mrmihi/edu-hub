@@ -16,5 +16,6 @@ export const serviceHosts = {
   reports: config.REPORT_SERVICE_BASE_URL,
   tickets: config.SUPPORT_SERVICE_BASE_URL,
   authentication : config.AUTHENTICATION_SERVICE_BASE_URL,
-  learner: config.LEARNER_SERVICE_BASE_URL
+  learner: config.LEARNER_SERVICE_BASE_URL,
+  report : config.REPORT_SERVICE_BASE_URL
 };
