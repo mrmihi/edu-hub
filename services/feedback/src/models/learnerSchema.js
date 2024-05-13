@@ -8,7 +8,7 @@ const learnerSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "learner",
+    default: 'learner',
   },
   email: {
     type: String,
@@ -35,5 +35,17 @@ const learnerSchema = new mongoose.Schema({
     required: [true, 'Please enter a password'],
     minlength: [6, 'Minimum password length is 6 characters'],
   },
-
+  enrolledCourses: {
+    type: [{ type: mongoose.Schema.Types.ObjectId }],
+    ref: 'Course',
+  },
+  progress: {
+    type: Map,
+    of: Number,
+    min: 0,
+    max: 100,
+    default: {},
+  },
 });
+
+module.exports = mongoose.model("learner", learnerSchema);
