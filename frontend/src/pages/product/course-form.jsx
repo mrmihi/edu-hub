@@ -4,16 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 import { MdPhotoCamera } from 'react-icons/md';
 import { Layout } from '../../components/layout';
 import { Button, Dropdown, Input } from '../../components/common';
-import { createProduct, getSingleProduct, updateProduct } from '../../services';
-import { setFormData } from '../../store/ui/products';
+import { createCourse, getSingleCourse, updateCourse } from '../../services';
+import { setFormData } from '../../store/ui/courses';
 import { useEffectOnce } from '../../hooks';
 import toast from '../../libs/toastify';
 import base64EncodeImage from '../../utils/image';
 
-const ProductForm = () => {
-  const { product_id: productId } = useParams();
+const CourseForm = () => {
+  const { course_id: courseId } = useParams();
 
-  const { formData, allowedTypes } = useSelector((state) => state.ui.products);
+  const { formData, allowedTypes } = useSelector((state) => state.ui.courses);
 
   const navigateTo = useNavigate();
 
@@ -31,8 +31,8 @@ const ProductForm = () => {
   };
 
   useEffectOnce(() => {
-    if (productId) {
-      getSingleProduct(productId).then(({ data }) => {
+    if (courseId) {
+      getSingleCourse(courseId).then(({ data }) => {
         dispatch(setFormData({ ...data, exp_date: data.exp_date.substring(0, 10), manufactured_date: data.manufactured_date.substring(0, 10) }));
       });
     }
@@ -40,7 +40,7 @@ const ProductForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = await (productId ? updateProduct(productId, formData) : createProduct(formData));
+    const data = await (courseId ? updateCourse(courseId, formData) : createCourse(formData));
     if (data) {
       navigateTo('/');
       setTimeout(() => {
@@ -54,12 +54,12 @@ const ProductForm = () => {
     <div>
       <Layout title="Home">
         <div>
-          <h2 class="text-4xl font-bold leading-tight lg:text-5xl px-6 md:px-24 mt-6">{productId ? 'Edit' : 'Add'} Product</h2>
+          <h2 class="text-4xl font-bold leading-tight lg:text-5xl px-6 md:px-24 mt-6">{courseId ? 'Edit' : 'Add'} Course</h2>
           <form onSubmit={handleSubmit}>
             <div class="bg-gray-100/10 rounded-xl shadow border-2 p-6 md:p-12 mx-6 md:mx-24 my-6">
               <div class="flex flex-col">
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-x-3">
-                  <Input id="name" placeholder="Product Name" label wrapperclasses="w-full" onChange={handleInputChange} required value={formData.name} />
+                  <Input id="name" placeholder="Course Name" label wrapperclasses="w-full" onChange={handleInputChange} required value={formData.name} />
                   <Dropdown id="type" filterkey="type" label="Type" options={allowedTypes} className="h-14" wrapperclasses="my-2 sm:my-0" onChange={handleInputChange} />
                 </div>
                 <div class="flex flex-col lg:flex-row justify-between items-center gap-x-3">
@@ -96,7 +96,7 @@ const ProductForm = () => {
                 {formData.image && <img className="w-full h-full object-cover" src={formData.image} />}
               </div>
               <input ref={input} accept="image/" type="file" class="hidden" onChange={async (e) => handleInputChange({ target: { id: 'image', value: await base64EncodeImage(e.target.files) } })} />
-              <Button className="w-full py-4">{productId ? 'Edit' : 'Add'} Batch</Button>
+              <Button className="w-full py-4">{courseId ? 'Edit' : 'Add'} Batch</Button>
             </div>
           </form>
         </div>
@@ -105,4 +105,4 @@ const ProductForm = () => {
   );
 };
 
-export default ProductForm;
+export default CourseForm;

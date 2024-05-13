@@ -5,7 +5,7 @@ import { Pagination } from 'flowbite-react';
 import { debounce } from 'lodash';
 import { Button, Filters, NoRecords, Sorts } from '../components/common';
 import { default as Layout } from '../components/layout';
-import { getAllProducts } from '../services/product';
+// import { getAllProducts } from '../services/course';
 
 const Home = () => {
   const [productRes, setproductRes] = useState(null);
@@ -18,9 +18,9 @@ const Home = () => {
   const user = useSelector((store) => store.data.user.authUser);
 
   const refresh = debounce(() => {
-    getAllProducts(filterQuery, sortQuery, page).then(({ data }) => {
-      setproductRes(data);
-    });
+    // getAllProducts(filterQuery, sortQuery, page).then(({ data }) => {
+    //   setproductRes(data);
+    // });
   }, 300);
 
   useEffect(() => {

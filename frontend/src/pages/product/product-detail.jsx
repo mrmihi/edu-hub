@@ -5,8 +5,8 @@ import { Rating, Table } from 'flowbite-react';
 import { Layout } from '../../components/layout';
 import { Button } from '../../components/common';
 import { useEffectOnce } from '../../hooks';
-import { setFormData } from '../../store/ui/products';
-import { getSingleProduct, deleteProduct, addProductRating } from '../../services';
+import { setFormData } from '../../store/ui/courses';
+// import { getSingleProduct, deleteProduct, addProductRating } from '../../services';
 import toast from '../../libs/toastify';
 
 function ProductDetail() {
@@ -23,8 +23,8 @@ function ProductDetail() {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const response = await getSingleProduct(productId);
-      setProduct(response.data);
+      // const response = await getSingleProduct(productId);
+      // setProduct(response.data);
     };
     singleProduct();
   }, [productId]);

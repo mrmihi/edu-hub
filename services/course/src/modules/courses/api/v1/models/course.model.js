@@ -11,6 +11,11 @@ const CourseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    type: {
+      type: String,
+      enum: ['online', 'in-class', 'hybrid'],
+      default: 'online',
+    },
     instructor: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Instructor', // Reference to the Instructor model
@@ -21,12 +26,14 @@ const CourseSchema = new mongoose.Schema(
         {
           title: String,
           content: String,
+          Progress: Number
         },
       ],
       videos: [
         {
           title: String,
           url: String,
+          Progress: Number
         },
       ],
       quizzes: [
@@ -37,6 +44,7 @@ const CourseSchema = new mongoose.Schema(
               question: String,
               options: [String],
               correctAnswer: String,
+              Progress: Number
             },
           ],
         },
@@ -63,11 +71,6 @@ const CourseSchema = new mongoose.Schema(
         type: String,
         required: true,
       },
-    },
-    status: {
-      type: String,
-      enum: ['pending', 'approved', 'cancelled'],
-      default: 'pending',
     },
   },
   {
