@@ -6,7 +6,7 @@ import Navbar from './navbar';
 import { useAuth } from '../../hooks';
 
 export const Layout = ({ children, hideHeader, hideFooter }) => {
-  useAuth();
+  // useAuth();
 
   return (
     <motion.main

@@ -8,7 +8,7 @@ initializeServer({
   service: 'Orchestrator',
   routes,
   leadingMiddleware: [
-    // authorizer,
+    authorizer,
     rateLimiter],
   cors: true,
   translations,

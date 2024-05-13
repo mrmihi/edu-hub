@@ -16,12 +16,10 @@ const OrderSchema = new mongoose.Schema(
     ],
     user: {
       type: mongoose.SchemaTypes.ObjectId,
-      required: true,
       ref: 'User',
     },
     total: {
       type: Number,
-      required: true,
     },
     status: {
       type: mongoose.SchemaTypes.String,

@@ -12,6 +12,6 @@ This table lists services and their corresponding ports.
 | user         | 2000        |
 | admin        | 2010        |
 | feedback     | 2011        |
-| scheduling   | 2012      |
-|              | 6379        |
+| scheduling   | 2012        |
+|          |         |
 

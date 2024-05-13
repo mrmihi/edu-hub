@@ -8,19 +8,18 @@ import { getAllOrders, emailOrderReport } from '../services';
 import toast from '../libs/toastify';
 
 const Reports = () => {
-    const [orderRes, setorderRes] = useState(null);
+    const [orderRes, setOrderRes] = useState('');
     const [page, setPage] = useState(1);
     const [filterQuery, setFilterQuery] = useState('');
     const [sortQuery, setSortQuery] = useState('');
-
+    //
     const { filters, sorts } = useSelector((store) => store.ui.orders);
-
+    //
     const refresh = debounce(() => {
         getAllOrders(filterQuery, sortQuery, page).then(({ data }) => {
-            setorderRes(data);
+            setOrderRes(data);
         });
     }, 300);
-
     useEffect(() => {
         refresh();
     }, [page, filterQuery, sortQuery]);
