@@ -14,4 +14,7 @@ This table lists services and their corresponding ports.
 | feedback     | 2011        |
 | scheduling   | 2012        |
 |authentication| 2013        |
+|learner       | 2014        |
+|              |             |
+
 
