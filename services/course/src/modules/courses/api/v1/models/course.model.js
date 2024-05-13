@@ -16,6 +16,10 @@ const CourseSchema = new mongoose.Schema(
       enum: ['online', 'in-class', 'hybrid'],
       default: 'online',
     },
+    location: {
+      type:String,
+      required: true
+    },
     instructor: {
       type: mongoose.SchemaTypes.ObjectId,
       ref: 'Instructor', // Reference to the Instructor model
@@ -49,6 +53,32 @@ const CourseSchema = new mongoose.Schema(
           ],
         },
       ],
+    },
+    schedule: {
+startDate: {
+        type: Date,
+        required: true,
+      },
+      endDate: {
+        type: Date,
+        required: true,
+      },
+      days: [
+        {
+          type: String,
+          enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'],
+        },
+      ],
+      timings: {
+        startTime: {
+          type: String,
+          required: true,
+        },
+        endTime: {
+          type: String,
+          required: true,
+        },
+      },
     },
     enrollmentDetails: {
       capacity: {
