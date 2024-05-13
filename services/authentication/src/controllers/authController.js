@@ -147,6 +147,16 @@ module.exports.password_reset = async (req, res) => {
 
 };
 
+module.exports.get_all_learner = async (req, res) => {
+  try {
+    const learners = await learnerSchema.find();
+    res.status(200).json({ learners });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
 //api call for authorization
 module.exports.requireAuh = async (req, res, next) => {
   const token = req.cookies.jwt;
