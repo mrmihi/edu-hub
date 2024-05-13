@@ -12,7 +12,7 @@ app.use('/system', expressHealth());
 app.use(express.json());
 app.use(cookieParser());
 // Authentication routes
-app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/authentication', authRoutes);
 
 mongoose
 .connect(dbURL)
