@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const {isEmail} = require('validator');
-const bcrypt = require('bcrypt');
+const { isEmail } = require('validator');
+const bcrypt = require("bcrypt");
 
 const learnerSchema = new mongoose.Schema({
   name: {
@@ -9,7 +9,7 @@ const learnerSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "learner",
+    default: 'learner',
   },
   email: {
     type: String,
@@ -36,19 +36,29 @@ const learnerSchema = new mongoose.Schema({
     required: [true, 'Please enter a password'],
     minlength: [6, 'Minimum password length is 6 characters'],
   },
-
+  enrolledCourses: {
+    type: [{ type: mongoose.Schema.Types.ObjectId }],
+    ref: 'Course',
+  },
+  progress: {
+    type: Map,
+    of: Number,
+    min: 0,
+    max: 100,
+    default: {},
+  },
 });
 
 // fire a function before doc saved to db
-learnerSchema.pre('save', async function(next) {
+learnerSchema.pre('save', async function (next) {
   const salt = await bcrypt.genSalt();
   this.password = await bcrypt.hash(this.password, salt);
   next();
 });
 
 // static method to login learner
-learnerSchema.statics.login = async function(email, password) {
-  const learner = await this.findOne({email});
+learnerSchema.statics.login = async function (email, password) {
+  const learner = await this.findOne({ email });
   if (learner) {
     const auth = await bcrypt.compare(password, learner.password);
     if (auth) {
@@ -56,16 +66,7 @@ learnerSchema.statics.login = async function(email, password) {
     }
     throw Error('incorrect password');
   }
-  throw Error('incorrect email');
+  throw Error('incorrect email');
 };
 
 module.exports = mongoose.model('learner', learnerSchema);
-
-// {
-//   "name" : "student1",
-//   "role" :"learner",
-//   "email" : "student1@gmail.com",
-//   "nic" :"12356221v",
-//   "contact":"0773024107",
-//   "password" : "123456"
-// }
