@@ -37,7 +37,7 @@ module.exports.requireAuth = async (req, res, next) => {
       const decoded = jwt.verify(token, "secret");
       
       if (decoded.role === "admin") {
-        const admin = await adminSchema.findById({ _id: decoded.id });
+        const admin = await adminSchema.findById({ _id: decoded.id }); 
         req.admin = admin;
         next();
       } else if (decoded.role === "instructor") {
@@ -78,7 +78,8 @@ module.exports.createFeedback = async (req, res) => {
     return res.status(401).json({ message: "Unauthorized User" });
   }
   const learnerID = req.learner._id;
-  const learneremail = req.learner.email;
+  const learneremail = req.learner.email; 
+  console.log(learnerID);
   try {
     const learner = await learnerSchema.findOne({ _id: learnerID });
     if (!learner) {

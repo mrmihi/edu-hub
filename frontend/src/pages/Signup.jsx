@@ -6,7 +6,6 @@ import { SignupApi } from '../services/loginApi';
 const Signup = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
   const [role, setRole] = useState('');
 
   const handleChangeRole = (e) => {
@@ -57,8 +56,6 @@ const Signup = () => {
       password: password,
     };
     setError('');
-    setLoading(true);
-
     try {
       const response = await SignupApi(request);
       if (response.success) {
@@ -69,7 +66,6 @@ const Signup = () => {
       }
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' });
-      setLoading(false);
     }
   };
 
@@ -94,8 +90,8 @@ const Signup = () => {
             <input type="password" name="password" placeholder="Password" className="border rounded-md py-2 px-3 w-full" />
           </div>
           {error && <p className="text-red-500 mb-4">{error}</p>}
-          <button type="submit" disabled={loading} className="bg-blue-500 text-white py-2 px-4 rounded-md w-full">
-            {loading ? 'Loading...' : 'Sign Up'}
+          <button type="submit"className="bg-blue-500 text-white py-2 px-4 rounded-md w-full">
+            Signup
           </button>
         </form>
         <div className="mt-4 flex justify-end">

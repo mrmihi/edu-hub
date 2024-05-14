@@ -63,7 +63,7 @@ export const SignupApi = async (request) => {
   
 export const LogoutApi = async () => {
     try {
-      const response = await axios.get("/logout");
+      const response = await axiosInstance.get("api/v1/authentication/logout");
       if (response.status === 200) {
         Cookies.remove("token");
         return { success: true };
@@ -77,7 +77,7 @@ export const LogoutApi = async () => {
   
   export const ResetPasswordApi = async (request) => {
     try {
-      const response = await axios.put("/reset", request);
+      const response = await axiosInstance.put("api/v1/authentication/reset", request);
       if (response.status === 200) {
         return { success: true };
       } else if (response.status === 204) {

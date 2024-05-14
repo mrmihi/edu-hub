@@ -7,7 +7,6 @@ import background from '../assests/background.jpg';
 const Login = () => {
   const navigate = useNavigate();
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
 
   const validateEmail = (email) => {
     const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -35,8 +34,6 @@ const Login = () => {
       role: role,
     };
     setError('');
-    setLoading(true);
-
     try {
       const response = await LoginApi(request);
       if (response.success) {
@@ -53,7 +50,6 @@ const Login = () => {
       }
     } catch (error) {
       enqueueSnackbar(error.message, { variant: 'error' });
-      setLoading(false);
     }
   };
   return (
@@ -92,10 +88,9 @@ const Login = () => {
         </div>
         <button
           type="submit"
-          disabled={loading}
           className="bg-blue-500 text-white py-2 px-4 rounded-md w-full"
         >
-          {loading ? "Logging in..." : "Login"}
+          Login
         </button>
         <br />
         <div className="flex justify-between mt-6">
