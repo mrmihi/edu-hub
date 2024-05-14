@@ -75,7 +75,7 @@ export const LogoutApi = async () => {
     }
   };
   
-  export const passwordResetApi = async (request) => {
+  export const ResetPasswordApi = async (request) => {
     try {
       const response = await axios.put("/reset", request);
       if (response.status === 200) {
