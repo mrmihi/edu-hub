@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { enqueueSnackbar } from 'notistack';
 import { Link, useNavigate } from 'react-router-dom';
-//import { SignupApi } from '../../services/AuthAPI';
+import { SignupApi } from '../services/loginApi';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -26,7 +26,7 @@ const Signup = () => {
     const contact = e.target.contact.value;
     const password = e.target.password.value;
 
-    if (!email || !password || !role || !name || !nic || !contact) {
+    if (!email || !password || !name || !nic || !contact) {
       setError('Please fill in all the fields');
       return;
     }
@@ -92,13 +92,6 @@ const Signup = () => {
           </div>
           <div className="mb-4">
             <input type="password" name="password" placeholder="Password" className="border rounded-md py-2 px-3 w-full" />
-          </div>
-          <div className="mb-4">
-            <select value={role} onChange={handleChangeRole} name="role" className="border rounded-md py-2 px-3 w-full">
-              <option value="">Select Role</option>
-              <option value="learner">Learner</option>
-              <option value="instructor">Instructor</option>
-            </select>
           </div>
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <button type="submit" disabled={loading} className="bg-blue-500 text-white py-2 px-4 rounded-md w-full">

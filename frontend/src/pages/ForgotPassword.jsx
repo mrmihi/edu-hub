@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { enqueueSnackbar } from 'notistack';
 import { Link, useNavigate } from 'react-router-dom';
-// import { ResetPasswordApi } from "../../services/AuthAPI";
+import { ResetPasswordApi } from "../services/loginApi";
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -36,18 +36,18 @@ const ForgotPassword = () => {
     setError('');
     setLoading(true);
 
-    // try {
-    //   const response = await ResetPasswordApi(request);
-    //   if (response.success) {
-    //     enqueueSnackbar("Password Reset Success", { variant: "success" });
-    //     navigate("/login");
-    //   } else {
-    //     enqueueSnackbar("Password Reset Failed", { variant: "error" });
-    //   }
-    // } catch (error) {
-    //   enqueueSnackbar(error.message, { variant: "error" });
-    //   setLoading(false);
-    // }
+    try {
+      const response = await ResetPasswordApi(request);
+      if (response.success) {
+        enqueueSnackbar("Password Reset Success", { variant: "success" });
+        navigate("/login");
+      } else {
+        enqueueSnackbar("Password Reset Failed", { variant: "error" });
+      }
+    } catch (error) {
+      enqueueSnackbar(error.message, { variant: "error" });
+      setLoading(false);
+    }
   };
 
   return (
