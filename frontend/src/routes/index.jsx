@@ -37,32 +37,26 @@ import Signup from '../pages/Signup';
 import ForgotPassword from '../pages/ForgotPassword';
 
 const AnimatedRoutes = () => {
+  // useAuth();
 
   const location = useLocation();
 
   return (
     <AnimatePresence>
       <Routes location={location}>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/verify" element={<Verify />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/payment" element={<Payment />} />
-        <Route path="/payment-success" element={<PaymentConfirmation />} />
-        <Route path="/product-add" element={<ProductForm />} />
-        <Route path="/product-edit/:product_id" element={<ProductForm />} />
-        <Route path="/product-detail/:product_id" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/tickets" element={<Tickets />} />
-        <Route path="/tickets/:ticket_id" element={<TicketDetail />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/" element={<Login />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+        <Route path="/course-enroll" element={<CourseEnroll />}></Route>
+        <Route path="/courses" element={<Courses />}></Route>
+        <Route path="/course-details" element={<CourseDetails />}></Route>
+        <Route path="/course-payment" element={<CoursePayment />}></Route>
+        <Route path="/feedback-form" element={<FeedbackForm />}></Route>
+        <Route path="/feedbacks" element={<Feedbacks />}></Route>
+        <Route path="/feedback-admin" element={<FeedbackAdmin />}></Route>
+        <Route path="/table" element={<ScheduledTable />}></Route>
+        <Route path="/admin-panel" element={<AdminPage />}></Route>
+        <Route path="/instructor-page" element={<InstructorDashboard />}></Route>
       </Routes>
     </AnimatePresence>
   );
