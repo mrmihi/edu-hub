@@ -25,7 +25,7 @@ handleErrors = (error) => {
   }
 
   //validation errors
-  if (error.message.includes("admin validation failed")) {
+  if (error.message.includes("validation failed")) {
     Object.values(error.errors).forEach(({ properties }) => {
       errors[properties.path] = properties.message;
     });
@@ -111,6 +111,51 @@ module.exports.logout_get = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });
   res.send("logged out");
 };
+
+module.exports.password_reset = async (req, res) => {
+  const { email, newpassword ,role } = req.body;
+  try{
+    if(role === "admin"){
+      const admin = await adminSchema.findOne({ email });
+      if (!admin) {
+        res.status(204).json({ message: "Admin not found" });
+      }
+      admin.password = newpassword;
+      await admin.save();
+      res.status(200).json({ message: "Password reset successful" });
+    }else if(role === "instructor"){
+      const vistor = await instructorSchema.findOne({ email });
+      if (!vistor) {
+        res.status(204).json({ message: "instructor not found" });
+      }
+      vistor.password = newpassword;
+      await vistor.save();
+      res.status(200).json({ message: "Password reset successful" });
+    }else if(role === "learner"){
+      const vistor = await learnerSchema.findOne({ email });
+      if (!vistor) {
+        res.status(204).json({ message: "learner not found" });
+      }
+      vistor.password = newpassword;
+      await vistor.save();
+      res.status(200).json({ message: "Password reset successful" });
+    }
+  }catch(error){
+    const errors = handleErrors(error);
+    res.status(400).json({ errors });
+  }
+
+};
+
+module.exports.get_all_learner = async (req, res) => {
+  try {
+    const learners = await learnerSchema.find();
+    res.status(200).json({ learners });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 
 //api call for authorization
 module.exports.requireAuh = async (req, res, next) => {

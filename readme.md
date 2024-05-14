@@ -1,4 +1,9 @@
-# edu-hub
+# Eduhub
+
+Team Details :- 
+IT2130824 - Vithanage H.D
+IT21291678 - Dehipola H.M.S.N
+IT21167300 - Sumanasekara P.D.M
 
 This is a [Turborepo](https://turbo.build/repo) designed to house all components of the edu-hub project.
 

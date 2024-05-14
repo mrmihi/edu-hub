@@ -19,7 +19,7 @@ export const registerSchema = Joi.object({
         return err;
       }),
     ),
-  role: Joi.string().valid(roles.buyer, roles.seller).optional().default(roles.buyer),
+  role: Joi.string().valid(roles.admin, roles.instructor, roles.learner).optional().default(roles.learner),
   mobile: Joi.string()
     .pattern(/^[0-9]\d{9}$/)
     .required(),
@@ -30,7 +30,7 @@ export const registerSchema = Joi.object({
     license_number: Joi.string().required(),
     owner_nic: Joi.string().required(),
   }).when('role', {
-    is: roles.seller,
+    is: roles.learner,
     then: Joi.required(),
     otherwise: Joi.optional(),
   }),

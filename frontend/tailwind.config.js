@@ -19,8 +19,8 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          base: 'rgb(17 24 39)',
-          hover: 'rgb(31 41 55)',
+          base: '#818cf8',
+          hover: '#a5b4fc',
         },
       },
       fontFamily: {

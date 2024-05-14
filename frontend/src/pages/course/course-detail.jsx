@@ -5,11 +5,11 @@ import { Rating, Table } from 'flowbite-react';
 import { Layout } from '../../components/layout';
 import { Button } from '../../components/common';
 import { useEffectOnce } from '../../hooks';
-import { setFormData } from '../../store/ui/products';
-import { getSingleProduct, deleteProduct, addProductRating } from '../../services';
+import { setFormData } from '../../store/ui/courses';
+// import { getSingleProduct, deleteProduct, addProductRating } from '../../services';
 import toast from '../../libs/toastify';
 
-function ProductDetail() {
+function CourseDetail() {
   const { product_id: productId } = useParams();
   const [product, setProduct] = useState({});
   const [cart, setCart] = useState([]);
@@ -23,8 +23,8 @@ function ProductDetail() {
 
   useEffect(() => {
     const singleProduct = async () => {
-      const response = await getSingleProduct(productId);
-      setProduct(response.data);
+      // const response = await getSingleProduct(productId);
+      // setProduct(response.data);
     };
     singleProduct();
   }, [productId]);
@@ -66,7 +66,7 @@ function ProductDetail() {
   };
 
   return (
-    <Layout title="ProductDetail">
+    <Layout title="CourseDetail">
       <div class=" bg-gray-100/10 rounded-xl shadow border-2 mx-6 md:mx-24 my-6 p-4 relative">
         <div class="flex flex-col lg:flex-row px-4 md:px-10 pt-10">
           <img class="rounded shadow-md object-cover w-full h-[50vh]" src={product.image}></img>
@@ -140,4 +140,4 @@ function ProductDetail() {
   );
 }
 
-export default ProductDetail;
+export default CourseDetail;

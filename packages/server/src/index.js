@@ -16,8 +16,8 @@ import { connect as connectDatabase } from '@app/mongoose';
 
 const initialize = ({ service, routes, leadingMiddleware = [], cors: enableCors, translations, database, config }) => {
   const logger = moduleLogger('Server');
-  clusterize(
-    () => {
+  // clusterize(
+  //   () => {
       const app = express();
 
       app.use(helmet());
@@ -81,9 +81,9 @@ const initialize = ({ service, routes, leadingMiddleware = [], cors: enableCors,
       app.listen(config.PORT, HOST, () => {
         logger.info(`${service} listening on ${HOST}:${config.PORT}`);
       });
-    },
-    { logger, workers: 1 },
-  );
+    // },
+    // { logger, workers: 1 },
+  // );
 };
 
 export default initialize;

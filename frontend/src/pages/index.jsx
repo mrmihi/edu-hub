@@ -11,5 +11,5 @@ export { default as Orders } from './orders';
 export { default as Cart } from './cart';
 export * from './auth';
 export * from './payment';
-export * from './product';
+export * from './course';
 export * from './tickets';

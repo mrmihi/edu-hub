@@ -11,19 +11,19 @@ import { constructReceiptEmailPayload } from './mappers';
 const logger = moduleLogger('order-service');
 
 export const serviceCreateOrder = async (order, user) => {
-  const existingOrder = await findUserLatestOrder(user);
-  if (existingOrder) {
-    if (
-      !isEqual(
-        existingOrder.products.map((p) => p._id.toString()),
-        order.products.map((p) => p._id),
-      )
-    ) {
-      return serviceUpdateSingleOrder(existingOrder._id, { products: order.products });
-    }
-    return existingOrder;
-  }
-  await traced(calculateTotals)(order);
+  // const existingOrder = await findUserLatestOrder(user);
+  // if (existingOrder) {
+  //   if (
+  //     !isEqual(
+  //       existingOrder.products.map((p) => p._id.toString()),
+  //       order.products.map((p) => p._id),
+  //     )
+  //   ) {
+  //     return serviceUpdateSingleOrder(existingOrder._id, { products: order.products });
+  //   }
+  //   return existingOrder;
+  // }
+  // await traced(calculateTotals)(order);
   return traced(createOrder)({ ...order, user });
 };
 

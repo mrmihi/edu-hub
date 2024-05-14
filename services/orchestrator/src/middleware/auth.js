@@ -7,10 +7,10 @@ import { getAuthUser } from '../services';
 
 const logger = moduleLogger('Auth-middleware');
 
-const whitelistedModuleRoutes = ['/v1/products'];
+const whitelistedModuleRoutes = ['/v1/authentication','/v1/learner','/v1/feedback','/v1/scheduling','/v1/report'];
 
 export const authorizer = tracedAsyncHandler(async function authorizer(req) {
-  if (!req.ignoreWhitelists && [...whitelistedRoutes, whitelistedModuleRoutes].find((route) => req.path.match(new RegExp(route)))) {
+  if (!req.ignoreWhitelists && [...whitelistedRoutes,...whitelistedModuleRoutes].find((route) => req.path.match(new RegExp(route)))) {
     return;
   }
   context.set('headers', req.headers);

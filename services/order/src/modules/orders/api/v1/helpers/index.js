@@ -1,10 +1,10 @@
-import { getProductsByIds } from '../../../../../services';
+import { getCoursesByIds } from '../../../../../services';
 
 export const calculateTotals = async (order) => {
-  if (order.products) {
-    const products = await getProductsByIds(order.products.map((product) => product._id));
-    order.total = products.reduce((total, product, index) => {
-      total += product.selling_price * order.products[index].quantity ?? 1;
+  if (order.courses) {
+    const courses = await getCoursesByIds(order.courses.map((product) => product._id));
+    order.total = courses.reduce((total, course, index) => {
+      total += course.paymentDetails.price * order.courses[index].quantity ?? 1;
       return total;
     }, 0);
   }

@@ -10,21 +10,24 @@ const orchestrator = express.Router();
 const connector = serviceConnector({ service: 'Proxy' });
 
 orchestrator.all('/:api_version/:module*', (req, res, next) => {
-  // eslint-disable-next-line default-case
   switch (req.params.module) {
     case 'courses':
     case 'users':
+    case 'auth':
+    case 'admin':
     case 'dashboard':
     case 'reports':
-    case 'tickets':
     case 'payments':
     case 'emails':
     case 'sms':
     case 'feedback':
     case 'scheduling':
     case 'orders':
+    case 'authentication':
+    case 'learner':
+    case 'report':
     default:
-      return next();
+    return next();
   }
   // return routeGuards[req.params.module](req, res, next);
   // return permittedRoles([])(req, res, next);

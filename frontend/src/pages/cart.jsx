@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Table } from 'flowbite-react';
 import { default as Layout } from '../components/layout';
 import { Button, Lottie } from '../components/common';
-import { getAllProductsWithoutPagination, placeOrder } from '../services';
+// import { getAllProductsWithoutPagination, placeOrder } from '../services';
 import toast from '../libs/toastify';
 import CartAnimation from '../../public/assets/animations/cart.json';
 import NoActivityAnimation from '../../public/assets/animations/no-activity.json';
@@ -16,9 +16,9 @@ const Cart = () => {
   useEffect(() => {
     const cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : [];
     if (cart.length) {
-      getAllProductsWithoutPagination(`filter[_id]=in(${cart})`).then((data) => {
-        if (data) setProducts(data.data);
-      });
+      // getAllProductsWithoutPagination(`filter[_id]=in(${cart})`).then((data) => {
+      //   if (data) setProducts(data.data);
+      // });
     }
   }, []);
 

@@ -8,8 +8,14 @@ export const serviceHosts = {
   products: config.PRODUCT_SERVICE_BASE_URL,
   courses: config.COURSE_SERVICE_BASE_URL,
   payments: config.PAYMENT_SERVICE_BASE_URL,
+  orders: config.ORDER_SERVICE_BASE_URL,
+  feedback: config.FEEDBACK_SERVICE_BASE_URL,
+  scheduling: config.SCHEDULING_SERVICE_BASE_URL,
   reviews: config.REVIEW_SERVICE_BASE_URL,
   dashboard: config.ADMIN_SERVICE_BASE_URL,
   reports: config.REPORT_SERVICE_BASE_URL,
   tickets: config.SUPPORT_SERVICE_BASE_URL,
+  authentication : config.AUTHENTICATION_SERVICE_BASE_URL,
+  learner: config.LEARNER_SERVICE_BASE_URL,
+  report : config.REPORT_SERVICE_BASE_URL
 };

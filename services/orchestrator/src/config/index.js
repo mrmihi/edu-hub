@@ -13,7 +13,10 @@ class Base {
       PAYMENT_SERVICE_BASE_URL: Joi.string().required(),
       ORDER_SERVICE_BASE_URL: Joi.string().required(),
       FEEDBACK_SERVICE_BASE_URL: Joi.string().required(),
-      SCHEDULING_SERVICE_BASE_URL: Joi.string().required()
+      SCHEDULING_SERVICE_BASE_URL: Joi.string().required(),
+      AUTHENTICATION_SERVICE_BASE_URL: Joi.string().required(),
+      LEARNER_SERVICE_BASE_URL: Joi.string().required(),
+      REPORT_SERVICE_BASE_URL: Joi.string().required()
     };
   }
   static get values() {
@@ -25,7 +28,10 @@ class Base {
       PAYMENT_SERVICE_BASE_URL: process.env.PAYMENT_SERVICE_BASE_URL,
       ORDER_SERVICE_BASE_URL: process.env.ORDER_SERVICE_BASE_URL,
       FEEDBACK_SERVICE_BASE_URL: process.env.FEEDBACK_SERVICE_BASE_URL,
-      SCHEDULING_SERVICE_BASE_URL: process.env.SCHEDULING_SERVICE_BASE_URL
+      SCHEDULING_SERVICE_BASE_URL: process.env.SCHEDULING_SERVICE_BASE_URL,
+      AUTHENTICATION_SERVICE_BASE_URL: process.env.AUTHENTICATION_SERVICE_BASE_URL,
+      LEARNER_SERVICE_BASE_URL: process.env.LEARNER_SERVICE_BASE_URL,
+      REPORT_SERVICE_BASE_URL: process.env.REPORT_SERVICE_BASE_URL
     };
   }
 }

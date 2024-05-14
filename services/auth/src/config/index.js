@@ -20,7 +20,7 @@ class Base {
     return {
       PORT: process.env.PORT ?? 2001,
       JWT_SECRET: process.env.JWT_SECRET,
-      ACCESS_TOKEN_EXPIRY: process.env.ACCESS_TOKEN_EXPIRY ?? '1h',
+      ACCESS_TOKEN_EXPIRY: process.env.ACCESS_TOKEN_EXPIRY ?? '1d',
       REFRESH_TOKEN_EXPIRY: process.env.REFRESH_TOKEN_EXPIRY ?? '1d',
       USER_SERVICE_BASE_URL: process.env.USER_SERVICE_BASE_URL,
       EMAIL_SERVICE_BASE_URL: process.env.EMAIL_SERVICE_BASE_URL,
