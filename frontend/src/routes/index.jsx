@@ -1,27 +1,27 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import { useAuth } from '../hooks';
-import {
-  Home,
-  Login,
-  Register,
-  Verify,
-  ForgotPassword,
-  ResetPassword,
-  Users,
-  Contact,
-  Dashboard,
-  Profile,
-  Orders,
-  Tickets,
-  TicketDetail,
-  Cart,
-  ProductForm,
-  ProductDetail,
-  NotFound,
-  Payment,
-  PaymentConfirmation,
-} from '../pages';
+// import { useAuth } from '../hooks';
+// import {
+//   Home,
+//   Login,
+//   Register,
+//   Verify,
+//   ForgotPassword,
+//   ResetPassword,
+//   Users,
+//   Contact,
+//   Dashboard,
+//   Profile,
+//   Orders,
+//   Tickets,
+//   TicketDetail,
+//   Cart,
+//   ProductForm,
+//   ProductDetail,
+//   NotFound,
+//   Payment,
+//   PaymentConfirmation,
+// } from '../pages';
 import { CourseEnroll } from '../pages/CourseEnroll';
 import { Notification } from '../pages/Notification';
 import { Courses } from '../pages/Courses';
@@ -32,6 +32,8 @@ import { Feedbacks } from '../pages/Feedbacks';
 import { PdfReport } from '../pages/PdfReport';
 import ScheduledTable from '../pages/ScheduledTable';
 import FeedbackAdmin from '../pages/FeedbackAdmin';
+import { AdminPage } from '../pages/AdminPage';
+import InstructorDashboard from '../pages/InstructorDashboard';
 
 const AnimatedRoutes = () => {
   // useAuth();
@@ -51,6 +53,8 @@ const AnimatedRoutes = () => {
         <Route path="/feedback-admin" element={<FeedbackAdmin />}></Route>
         <Route path="/pdf-report" element={<PdfReport />}></Route>
         <Route path="/table" element={<ScheduledTable />}></Route>
+        <Route path="/admin-panel" element={<AdminPage />}></Route>
+        <Route path="/instructor-page" element={<InstructorDashboard />}></Route>
       </Routes>
     </AnimatePresence>
   );
