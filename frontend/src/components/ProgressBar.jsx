@@ -1,13 +1,19 @@
 import React from 'react';
 
-const ProgressBar = ({ courseName, progressValue }) => {
+const ProgressBar = ({ progressValue }) => {
   return (
-    <div className="flex items-center mt-2">
-      <span className="mr-4">{courseName}</span>
-      <div className="bg-gray-200 w-full h-2 rounded-full">
-        <div className="bg-indigo-500 h-full rounded-full" style={{ width: `${progressValue}%` }}></div>
+    <div className="relative pt-1">
+      <div className="flex mb-2 items-center justify-between">
+        <div>
+          <span className="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-indigo-600 bg-indigo-200">Progress</span>
+        </div>
+        <div className="text-right">
+          <span className="text-xs font-semibold inline-block text-indigo-600">{progressValue}%</span>
+        </div>
       </div>
-      <span className="ml-4">{progressValue}%</span>
+      <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-indigo-200">
+        <div style={{ width: `${progressValue}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-indigo-500"></div>
+      </div>
     </div>
   );
 };

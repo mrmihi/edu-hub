@@ -4,33 +4,80 @@ import ProgressBar from '../components/ProgressBar';
 
 export const CourseEnroll = () => {
   const [selectedItem, setSelectedItem] = useState(null);
-  //   const [courses, setCourses] = useState([]);
+  const [progressValues, setProgressValues] = useState(0);
+  const [courses, setCourses] = useState({
+    title: 'Introduction to JavaScript',
+    description:
+      'JavaScript, often abbreviated as JS, is a programming language and core technology of the Web, alongside HTML and CSS. 99% of websites use JavaScript on the client side for webpage behavior. Web browsers have a dedicated JavaScript engine that executes the client code.',
+    instructor: 'John Doe',
+    content: {
+      lectureNotes: [
+        {
+          title: 'Introduction to Variables',
+          content: 'Variables are used to store data values.',
+          progress: 3,
+        },
+        {
+          title: 'Data Types',
+          content: 'JavaScript supports several data types including string, number, boole…',
+          progress: 10,
+        },
+        {
+          title: 'JavaScript Syntax',
+          content: 'Variables are used to store data values.',
+          progress: 8,
+        },
+        {
+          title: 'Object, Properties and Methods',
+          content: 'Variables are used to store data values.',
+          progress: 7,
+        },
+        {
+          title: 'Way to convert an Array to a String',
+          content: 'Variables are used to store data values.',
+          progress: 5,
+        },
+        {
+          title: 'Boolean Values',
+          content: 'Variables are used to store data values.',
+          progress: 8,
+        },
+        {
+          title: 'JavaScript this Keyword',
+          content: 'Variables are used to store data values.',
+          progress: 2,
+        },
+        {
+          title: 'Classes and Modules',
+          content: 'Variables are used to store data values.',
+          progress: 7,
+        },
+      ],
+    },
+  });
 
-  //   useEffect(() => {
-  //     const fetchCourses = async () => {
-  //       try {
-  //         const response = await axios.get("url");
-  //         setCourses(response.data);
-  //       } catch (error) {
-  //         console.error("Error fetching courses: ", error);
-  //       }
-  //     };
-  //     fetchCourses();
-  //   }, []);
+  // useEffect(() => {
+  //   const fetchCourses = async () => {
+  //     try {
+  //       const response = getAllCourses();
+  //       setCourses(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching courses: ', error);
+  //     }
+  //   };
+  //   fetchCourses();
+  // }, []);
+
+  // console.log(courses);
 
   const handleSelectedItem = (item) => {
     setSelectedItem(item);
   };
 
-  const [progressValues, setProgressValues] = useState({
-    item1: 60,
-  });
-
-  const handleCheckboxChange = (itemName) => {
-    setProgressValues({
-      ...progressValues,
-      [itemName]: progressValues[itemName] === 100 ? 0 : 100,
-    });
+  const handleCheckboxChange = (event, note) => {
+    const isChecked = event.target.checked;
+    const value = note.progress;
+    setProgressValues((prevValue) => (isChecked ? prevValue + value : prevValue - value));
   };
 
   return (
@@ -38,53 +85,45 @@ export const CourseEnroll = () => {
       <div className="max-w mx-auto bg-white shadow-md rounded-lg overflow-hidden">
         <div className="p-4 bg-indigo-50">
           <div className="mt-40">
-            <h1 className="text-5xl font-semibold mb-2">Course Title</h1>
-            <p className="text-xl">Instructor: Instructor Name</p>
+            <h1 className="text-5xl font-semibold mb-2">{courses.title}</h1>
+            <p className="text-3xl">{courses.instructor}</p>
           </div>
         </div>
 
         <div className="p-4">
-          <div className="flex justify-between">
-            <div>
-              <h2 className="text-lg font-semibold mb-2">Description</h2>
-              <p className="text-sm">Course Description</p>
+          <div className="flex justify-between mt-10">
+            <div className="ml-28 max-w-xl">
+              <p className="text-m font-semibold">{courses.description}</p>
             </div>
 
-            <div className="mt-4">
+            <div className="mr-28  border-4 border-indigo-500">
               {/* Progress bars */}
-              <h2 className="text-lg font-semibold mb-2">Progress</h2>
-              {Object.keys(progressValues).map((key) => (
-                <ProgressBar key={key} itemName={`Item ${key}`} progressValue={progressValues[key]} />
-              ))}
+              <div className="bg-white shadow rounded p-4 w-80">
+                <ProgressBar progressValue={progressValues} />
+              </div>
             </div>
           </div>
 
           <div className="mt-6 py-6 px-28">
             <div className="flex flex-col justify-between">
-              <div className="flex bg-indigo-50 px-6 py-6 flex-row">
-                <button className="mr-6 hover:bg-indigo-500">Notes</button>
-                <button className="mr-6 hover:bg-indigo-500">Videos</button>
-                <button className="hover:bg-indigo-500">Quizzes</button>
+              <div className="flex bg-indigo-500 px-6 py-6 flex-row">
+                <button className="mr-6 hover:bg-indigo-500 text-slate-100 font-semibold text-m">Notes</button>
+                <button className="mr-6 hover:bg-indigo-500 text-slate-100 font-semibold text-m">Videos</button>
+                <button className="hover:bg-indigo-500 text-slate-100 font-semibold text-m">Quizzes</button>
               </div>
             </div>
             <div className="mt-10">
-              <div className="flex bg-gray-100 hover:bg-indigo-500 px-6 py-6 flex-row">
+              {/* <div className="flex bg-gray-100 hover:bg-indigo-500 px-6 py-6 flex-row">
                 <span>Course Title</span>
-              </div>
-              <div className="absolute z-10 mt-1 w-full rounded-md bg-white shadow-lg">
+              </div> */}
+              <div className="relative z-10 mt-1 w-full rounded-md bg-white shadow-lg">
                 <ul>
-                  <li className="py-2 px-4 flex items-center">
-                    <span>Item 1</span>
-                    <input type="checkbox" className="mr-2" />
-                  </li>
-                  <li className="py-2 px-4 flex items-center">
-                    <span>Item 2</span>
-                    <input type="checkbox" className="mr-2" />
-                  </li>
-                  <li className="py-2 px-4 flex items-center">
-                    <span>Item 3</span>
-                    <input type="checkbox" className="mr-2" />
-                  </li>
+                  {courses.content.lectureNotes.map((note, index) => (
+                    <li key={index} className="py-2 px-4 flex justify-center items-center w-full">
+                      <span className="flex-1">{note.title}</span>
+                      <input type="checkbox" className="ml-2" onChange={(e) => handleCheckboxChange(e, note)} />
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
