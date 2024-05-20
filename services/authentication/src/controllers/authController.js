@@ -123,20 +123,20 @@ module.exports.password_reset = async (req, res) => {
       await admin.save();
       res.status(200).json({ message: 'Password reset successful' });
     } else if (role === 'instructor') {
-      const vistor = await instructorSchema.findOne({ email });
-      if (!vistor) {
+      const instructor = await instructorSchema.findOne({ email });
+      if (!instructor) {
         res.status(204).json({ message: 'instructor not found' });
       }
-      vistor.password = newpassword;
-      await vistor.save();
+      instructor.password = newpassword;
+      await instructor.save();
       res.status(200).json({ message: 'Password reset successful' });
     } else if (role === 'learner') {
-      const vistor = await learnerSchema.findOne({ email });
-      if (!vistor) {
+      const Learner = await learnerSchema.findOne({ email });
+      if (!Learner) {
         res.status(204).json({ message: 'learner not found' });
       }
-      vistor.password = newpassword;
-      await vistor.save();
+      Learner.password = newpassword;
+      await Learner.save();
       res.status(200).json({ message: 'Password reset successful' });
     }
   } catch (error) {

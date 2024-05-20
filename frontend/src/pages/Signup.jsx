@@ -49,7 +49,7 @@ const Signup = () => {
 
     const request = {
       name: name,
-      role: role,
+      role: 'learner',
       email: email,
       nic: nic,
       contact: contact,

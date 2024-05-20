@@ -31,7 +31,8 @@ const ForgotPassword = () => {
 
     const request = {
       email: email,
-      newPassword: newPassword,
+      role : 'learner',
+      newpassword: newPassword,
     };
     setError('');
     setLoading(true);
@@ -40,7 +41,7 @@ const ForgotPassword = () => {
       const response = await ResetPasswordApi(request);
       if (response.success) {
         enqueueSnackbar("Password Reset Success", { variant: "success" });
-        navigate("/login");
+        navigate("/");
       } else {
         enqueueSnackbar("Password Reset Failed", { variant: "error" });
       }
@@ -65,8 +66,8 @@ const ForgotPassword = () => {
             <input type="password" name="confirmPassword" placeholder="Confirm Password" className="border rounded-md py-2 px-3 w-full" />
           </div>
           {error && <p className="text-red-500 mb-4">{error}</p>}
-          <button type="submit" disabled={loading} className="bg-blue-500 text-white py-2 px-4 rounded-md w-full">
-            {loading ? 'Loading...' : 'Reset Password'}
+          <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md w-full">
+            Rest Password
           </button>
           <div className="mt-4 flex justify-end">
             <Link to="/" className="text-blue-500">
